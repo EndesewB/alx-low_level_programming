@@ -8,11 +8,20 @@
  */
 int main(void)
 {
-	char b;
+	char a = 'a';
 	
-	for (b = 'a'; b <= 'z'; b++)
-		if (b != 'q' && b != 'e')
-			putchar(b);
+	while (a <= 'z')
+	{
+		putchar(a);
+		a++;
+	}
+	a = 'A'; 
+
+	while (a <= 'Z')
+	{
+		putchar(a);
+		a++;
+	}
 	putchar('\n');
 	return (0);
 }

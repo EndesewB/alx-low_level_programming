@@ -6,20 +6,19 @@
  *
  * Return: Nothing
  */
-
 void rev_string(char *s)
 {
-	int j, i;
-	char chr;
+	int l, i;
+	char ch;
 
-	for (j = 0; s[j] != '\0'; ++j)
+	for (l = 0; s[l] != '\0'; ++l)
 		;
-	
-	for (i = 0; i < j / 2; ++i)
+
+	for (i = 0; i < l / 2; ++i)
 	{
-		chr = s[i];
+		ch = s[i];
 		s[i] = s[l - 1 - i];
-		s[j - 1 - i] = chr;
+		s[l - 1 - i] = ch;
 	}
 
 }

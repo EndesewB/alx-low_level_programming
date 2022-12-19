@@ -5,7 +5,7 @@
  * @s: string parameter input
  *
  * Return: Nothing
-*/
+ */
 
 void rev_string(char *s)
 {
@@ -14,6 +14,7 @@ void rev_string(char *s)
 
 	for (j = 0; s[j] != '\0'; ++j)
 		;
+	
 	for (i = 0; i < j / 2; ++i)
 	{
 		chr = s[i];

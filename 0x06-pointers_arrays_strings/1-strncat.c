@@ -17,7 +17,7 @@ char *_strncat(char *dest, char *src, int n)
 	while (*(src + j) != 0)
 	{
 		*(dest + i + j)	= *(src + j);
-		if (i >= n)
+		if (j >= n)
 			break;
 		j++;
 	}

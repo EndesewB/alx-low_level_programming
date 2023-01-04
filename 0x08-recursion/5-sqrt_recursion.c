@@ -4,7 +4,7 @@
  * @a: fist square root value
  * @b: the number that go to sqrts
  *
- * Return: value 
+ * Return: value
  */
 int sqrt2(int a, int b)
 {

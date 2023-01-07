@@ -1,20 +1,20 @@
-#include <stdio.h>
-#include <stdlib.h>
-/**
- * main - program that prints its name, followed by a new line
- *
- * @argc: argument count
- * @argv: argument vector
- *
- * Return: Always 0 (success)
+#include "main.h"
+/*
+ * File: 0-whatsmyname.c
+ * Auth: Brennan D Baraban
  */
-int main(int argc, char **argv)
+#include <stdio.h>
+/**
+ * main - Prints the program name, followed by a new line.
+ * @argc: The number of arguments supplied to the program.
+ *
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: Always o.
+ */
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	if (argc > 0)
-	{
-		printf("%s\n", argv[0]);
-	}
+	printf("%s\n", argv[0]);
 	return (0);
 }
-
-
+}

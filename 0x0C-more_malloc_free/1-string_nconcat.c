@@ -47,6 +47,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		sn = malloc(1 + sizeof(char) * (slen1 + n));
 	}
+	if (sn == NUUL)
+	{
+		return (NULL);
+	}
 	for (i = 0; s1[i] != 0; i++)
 	{
 		sn[i] = s1[i];

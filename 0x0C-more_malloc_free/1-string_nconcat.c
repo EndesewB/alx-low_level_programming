@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 /**
  *_slen - string length
  *@s: input string

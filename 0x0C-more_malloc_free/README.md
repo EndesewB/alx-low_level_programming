@@ -1,1 +1,1 @@
- more memory allocation , free and exit
+the more memory allocation , free and exit

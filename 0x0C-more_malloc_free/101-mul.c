@@ -1,131 +1,126 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
 
 /**
- * check_num - fun check the string
- * @st: string being
- * Return:0
+ * _is_zero - determines if any number is zero
+ * @argv: argument vector.
+ *
+ * Return: no return.
  */
-
-int check_num(char *st)
+void _is_zero(char *argv[])
 {
-	int i;
+int i, isn1 = 1, isn2 = 1;
 
-	for (i = 0; st[i] != '\0'; i++)
-	{
-		if (st[i] < '0' || st[i] > '9')
-			return (0);
-	}
-	return (1);
+for (i = 0; argv[1][i]; i++)
+if (argv[1][i] != '0')
+{
+isn1 = 0;
+break;
+}
+
+for (i = 0; argv[2][i]; i++)
+if (argv[2][i] != '0')
+{
+isn2 = 0;
+break;
+}
+
+if (isn1 == 1 || isn2 == 1)
+{
+printf("0\n");
+exit(0);
+}
 }
 
 /**
- * string_length - calc
- * @str: string to check
- * Return: 0
+ * _initialize_array - set memery to zero in a new array
+ * @ar: char array.
+ * @lar: length of the char array.
+ *
+ * Return: pointer of a char array.
  */
-
-unsigned int string_length(char *str)
+char *_initialize_array(char *ar, int lar)
 {
-	int i;
+int i = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
-		i++;
-	return (i);
+for (i = 0; i < lar; i++)
+ar[i] = '0';
+ar[lar] = '\0';
+return (ar);
 }
 
 /**
- * print_string - fun to print a string
- * @st: string to print
- * Return:0
+ * _checknum - determines length of the number
+ * and checks if number is in base 10.
+ * @argv: arguments vector.
+ * @n: row of the array.
+ *
+ * Return: length of the number.
  */
-
-void print_string(char *st)
+int _checknum(char *argv[], int n)
 {
-	while (*st == '\0')
-		st++;
-	if (*st == '\0')
-		_putchar('0');
-	while (*st == '0')
-		st++;
-	while (*st != '\0')
-	{
-		_putchar(*st);
-		st++;
-	}
-	_putchar('\n');
+int ln;
+
+for (ln = 0; argv[n][ln]; ln++)
+if (!isdigit(argv[n][ln]))
+{
+printf("Error\n");
+exit(98);
+}
+
+return (ln);
 }
 
 /**
- * _calloc - fun for memory
- * @number: number
- * @size: size
- * Return: 0
+ * main - Entry point.
+ * program that multiplies two positive numbers.
+ * @argc: number of arguments.
+ * @argv: arguments vector.
+ *
+ * Return: 0 - success.
  */
-
-void *_calloc(unsigned int number, unsigned int size)
+int main(int argc, char *argv[])
 {
-	char *p;
-	unsigned int i;
+int ln1, ln2, lnout, add, addl, i, j, k, ca;
+char *nout;
 
-	if (number == 0 || size == 0)
-		return (NULL);
-	p = malloc(number * size);
-	if (p == 0)
-		return (NULL);
-	for (i = 0; i < (number * size); i++)
-		p[i] = 0;
-	return (p);
+if (argc != 3)
+printf("Error\n"), exit(98);
+ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
+_is_zero(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
+if (nout == NULL)
+printf("Error\n"), exit(98);
+nout = _initialize_array(nout, lnout);
+k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
+for (; k >= 0; k--, i--)
+{
+if (i < 0)
+{
+if (addl > 0)
+{
+add = (nout[k] - '0') + addl;
+if (add > 9)
+nout[k - 1] = (add / 10) + '0';
+nout[k] = (add % 10) + '0';
 }
-
-/**
- * main - fun multi
- * @argc: num
- * @argv: argument variables
- * Return: 0
- */
-
-int main(int argc, char **argv)
+i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
+}
+if (j < 0)
 {
-	char *n1, *n2, *multi_res;
-	unsigned int l = 0, l1 = 0, l2 = 0, a, b, t = 0, c = 0, ten = 0, i;
-
-	if (argc < 3)
-	{
-		print_string("Error");
-		exit(98);
-	}
-	n1 = argv[1];
-	n2 = argv[2];
-	if (!(check_num(n1) && check_num(n2)))
-	{
-		print_string("Error");
-		exit(98);
-	}
-	l1 = string_length(n1);
-	l2 = string_length(n2);
-	l = l1 + l2;
-	multi_res = _calloc(l + 1, sizeof(char *));
-	if (multi_res == 0)
-	{
-		print_string("Error");
-		exit(98);
-	}
-	for (i = 0; i < l1; i++, ten++)
-	{
-		for (c = 0, b = 0; b < l2; b++)
-		{
-			t = (n1[l1 - i - 1] - '0') * (n2[l2 - b - 1] - '0') + c;
-			printf("%u\n", t);
-			if (multi_res[l - b - ten - 1] > 0)
-				t = t + multi_res[l - b - ten - 1] - '0';
-			multi_res[l - b - ten - 1] = t % 10 + '0';
-			c = t / 10;
-		}
-		multi_res[l - b - ten - 1] += c + '0';
-	}
-	print_string(multi_res);
-	free(multi_res);
-	return (0);
+if (nout[0] != '0')
+break;
+lnout--;
+free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
+k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
+}
+if (j >= 0)
+{
+add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
+addl = add / 10, nout[k] = (add % 10) + '0';
+}
+}
+printf("%s\n", nout);
+return (0);
 }

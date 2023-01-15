@@ -104,7 +104,7 @@ i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
 if (j < 0)
 {
 if (nout[0] != '0')
-break, lnout--;
+break;lnout--;
 free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
 }
 if (j >= 0)
@@ -113,5 +113,5 @@ add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
 addl = add / 10, nout[k] = (add % 10) + '0';
 }
 }
-printf("%s\n", nout), free(nout), return (0);
+printf("%s\n", nout), free(nout);return (0);
 }

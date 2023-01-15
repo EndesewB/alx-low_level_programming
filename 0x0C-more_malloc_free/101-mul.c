@@ -107,6 +107,7 @@ if (j < 0)
 if (nout[0] != '0')
 break;
 lnout--;
+k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
 free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
 }
 if (j >= 0)

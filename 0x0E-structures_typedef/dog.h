@@ -1,9 +1,10 @@
-#include <stdio.h>
-
+#ifndef DOG_H
+#define DOG_H
 /**
- * struct - a structure about the dog data
- *
- * Return: always 0 in success
+ * struct dog - short description about the dog
+ * @name: name of the dog
+ * @age: age of the dog
+ * @owner: to whom it belongs to
  */
 struct dog
 {
@@ -11,3 +12,4 @@ struct dog
 	char *owner;
 	float age;
 };
+#endif

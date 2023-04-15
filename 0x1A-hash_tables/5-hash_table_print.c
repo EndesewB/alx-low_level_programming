@@ -24,13 +24,9 @@ void hash_table_print(const hash_table_t *ht)
 		while (current != NULL)
 		{
 			if (!comma)
-				print(", ");
+				printf(", ");
 			printf("'%s': '%s'", current->key, current->value);
 			comma = 0;
-			/*if (i < ht->size - 1)
-			{
-				printf(", ");
-			}*/
 			current = current->next;
 		}
 	}

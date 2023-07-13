@@ -11,7 +11,7 @@
  * Return: The first index where value is located
  * or -1 if value is not found or if array is NULL
  */
-int b_search(int *array, size_t low, size_t high, int value)
+int binaryy_search(int *array, size_t low, size_t high, int value)
 {
 	size_t left = low;
 	size_t right = high - 1;
@@ -73,7 +73,7 @@ int exponential_search(int *array, size_t size, int value)
 		else
 			min = size;
 		printf("Value found between indexes [%lu] and [%lu]\n", bound / 2, min - 1);
-		result = b_search(array, bound / 2,  min, value);
+		result = binaryy_search(array, bound / 2,  min, value);
 		if (result != -1)
 			return (result);
 	}
